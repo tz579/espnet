@@ -1,0 +1,20 @@
+# exported envs are for c/c++-based compilation and thus are based on sys-level conda pkgs
+# to swich to "pip" path instead of the default conda path, specify python path for make
+
+git reset --hard
+git submodule foreach --recursive git reset --hard
+git pull
+git submodule sync --recursive
+git submodule update --init --recursive
+for ptc in `ls patch.*`; do patch -Np0 -i $ptc; done
+
+cd tools
+# export CMAKE_PREFIX_PATH="/opt/conda" # no use, has to specify inside venv
+# export CUDA_HOME="/opt/conda" # no use, has to specify inside venv by nvcc_linux-64 conda pkg
+export CONDA_BUILD_SYSROOT="/opt/conda/x86_64-conda_cos6-linux-gnu/sysroot" # only for non-virtual-conda deactivation
+conda clean -yf
+pip cache purge
+make clean
+make PYTHON=`which python` KALDI=/home/Applications/kaldi-5.x
+. venv/bin/activate && conda clean -yf
+pip cache purge

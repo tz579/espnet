@@ -1,62 +1,58 @@
-HEAD is now at 5410797eb Updated version
+HEAD is now at a753ba4f5 Merge pull request #2269 from nzhoward/aidatatang-conformer
 Entering 'doc/notebook'
 HEAD is now at cbce96b0 Merge pull request #11 from Syzygianinfern0/fix_asr_recipe
 Already up to date.
 Synchronizing submodule url for 'doc/notebook'
 patching file tools/check_install.py
-patching file tools/installers/install_anaconda.sh
 patching file tools/Makefile
-Remove all contents from the following package caches?
-ERROR: No matching packages
 rm -rf nkf.done swig.done moses.done mwerSegmenter.done
 rm -rf hts_engine_API.done open_jtalk.done pyopenjtalk.done
 rm -rf nkf mecab swig moses mwerSegmenter
 rm -rf PESQ PESQ.zip
-rm -rf kaldi venv warp-ctc warp-transducer chainer_ctc
-rm -f miniconda.sh
-rm -rf *.done activate_python.sh
+rm -rf warp-ctc warp-transducer chainer_ctc
+rm -rf *.done
 find . -iname "*.pyc" -delete
-PYTHON=/opt/conda/bin/python
+Remove all contents from the following package caches?
+ERROR: No matching packages
+Python 3.8.3
+Collecting pip
+  Using cached https://files.pythonhosted.org/packages/bd/b1/56a834acdbe23b486dea16aaf4c27ed28eb292695b90d01dff96c96597de/pip-20.2.1-py2.py3-none-any.whl
+Installing collected packages: pip
+  Found existing installation: pip 19.2.3
+    Uninstalling pip-19.2.3:
+      Successfully uninstalled pip-19.2.3
+Successfully installed pip-20.2.1
 CUDA_VERSION=10.2
-KALDI=/home/Applications/kaldi-5.x
+PYTHON=/home/Applications/espnet-0.x/tools/venv/bin/python3
+PYTHON_VERSION=Python 3.8.3
+IS_CONDA=
+USE_PIP=0
 TH_VERSION=1.6.0
 CONDA_PYTORCH=pytorch=1.6.0 cudatoolkit=10.2
 PIP_PYTORCH=torch==1.6.0 -f https://download.pytorch.org/whl/cu102/torch_stable.html
 CHAINER_VERSION=6.0.0
 PIP_CHAINER=chainer==6.0.0
 NO_CUPY=0
-test -d /home/Applications/kaldi-5.x
-ln -s /home/Applications/kaldi-5.x kaldi  # put a symbolic link
-touch kaldi.done
-test -d venv || /opt/conda/bin/python -m venv venv
-echo ". /home/Applications/espnet-0.x/tools/venv/bin/activate" > activate_python.sh
-. ./activate_python.sh; pip3 install pip --upgrade
-Collecting pip
-  Using cached https://files.pythonhosted.org/packages/36/74/38c2410d688ac7b48afa07d413674afc1f903c1c1f854de51dc8eb2367a5/pip-20.2-py2.py3-none-any.whl
-Installing collected packages: pip
-  Found existing installation: pip 19.2.3
-    Uninstalling pip-19.2.3:
-      Successfully uninstalled pip-19.2.3
-Successfully installed pip-20.2
-. ./activate_python.sh; pip3 install numpy --upgrade  # Workaround for "ImportError: numpy.core.multiarray failed to import"
+. ./activate_python.sh && python3 -m pip install numpy --upgrade  # Workaround for "ImportError: numpy.core.multiarray failed to import"
 Collecting numpy
   Using cached numpy-1.19.1-cp38-cp38-manylinux2010_x86_64.whl (14.5 MB)
 Installing collected packages: numpy
 Successfully installed numpy-1.19.1
-. ./activate_python.sh; pip3 install torch==1.6.0 -f https://download.pytorch.org/whl/cu102/torch_stable.html
+. ./activate_python.sh && python3 -m pip install torch==1.6.0 -f https://download.pytorch.org/whl/cu102/torch_stable.html
 Looking in links: https://download.pytorch.org/whl/cu102/torch_stable.html
 Collecting torch==1.6.0
   Using cached torch-1.6.0-cp38-cp38-manylinux1_x86_64.whl (748.8 MB)
+Requirement already satisfied: numpy in ./venv/lib/python3.8/site-packages (from torch==1.6.0) (1.19.1)
 Collecting future
   Using cached future-0.18.2.tar.gz (829 kB)
-Requirement already satisfied: numpy in ./venv/lib/python3.8/site-packages (from torch==1.6.0) (1.19.1)
 Using legacy 'setup.py install' for future, since package 'wheel' is not installed.
 Installing collected packages: future, torch
     Running setup.py install for future: started
     Running setup.py install for future: finished with status 'done'
 Successfully installed future-0.18.2 torch-1.6.0
 touch pytorch.done
-. ./activate_python.sh && pip3 install -e ..  # Install editable mode by default
+touch conda_packages.done
+. ./activate_python.sh && python3 -m pip install -e ..  # Install editable mode by default
 Obtaining file:///home/Applications/espnet-0.x
 Requirement already satisfied: setuptools>=38.5.1 in ./venv/lib/python3.8/site-packages (from espnet==0.9.0) (41.2.0)
 Collecting configargparse>=1.2.1
@@ -84,7 +80,7 @@ Collecting gdown
     Preparing wheel metadata: started
     Preparing wheel metadata: finished with status 'done'
 Collecting espnet_model_zoo
-  Downloading espnet_model_zoo-0.0.0a5-py3-none-any.whl (13 kB)
+  Using cached espnet_model_zoo-0.0.0a5-py3-none-any.whl (13 kB)
 Collecting tensorboard>=1.14
   Using cached tensorboard-2.3.0-py3-none-any.whl (6.8 MB)
 Collecting tensorboardX>=1.8
@@ -133,6 +129,8 @@ Collecting fastdtw
   Using cached fastdtw-0.3.4.tar.gz (133 kB)
 Collecting torch_optimizer
   Using cached torch_optimizer-0.0.1a14-py3-none-any.whl (40 kB)
+Collecting torchaudio==0.6.0
+  Downloading torchaudio-0.6.0-cp38-cp38-manylinux1_x86_64.whl (6.7 MB)
 Requirement already satisfied: numpy>=1.14.5 in ./venv/lib/python3.8/site-packages (from scipy>=1.4.1->espnet==0.9.0) (1.19.1)
 Collecting cycler>=0.10
   Using cached cycler-0.10.0-py2.py3-none-any.whl (6.5 kB)
@@ -142,38 +140,38 @@ Collecting pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1
   Using cached pyparsing-2.4.7-py2.py3-none-any.whl (67 kB)
 Collecting python-dateutil>=2.1
   Using cached python_dateutil-2.8.1-py2.py3-none-any.whl (227 kB)
-Collecting requests[socks]
-  Using cached requests-2.24.0-py2.py3-none-any.whl (61 kB)
-Collecting tqdm
-  Using cached tqdm-4.48.0-py2.py3-none-any.whl (67 kB)
 Collecting six
   Using cached six-1.15.0-py2.py3-none-any.whl (10 kB)
+Collecting requests[socks]
+  Using cached requests-2.24.0-py2.py3-none-any.whl (61 kB)
 Collecting filelock
   Using cached filelock-3.0.12-py3-none-any.whl (7.6 kB)
+Collecting tqdm
+  Downloading tqdm-4.48.2-py2.py3-none-any.whl (68 kB)
 Collecting pandas
   Using cached pandas-1.1.0-cp38-cp38-manylinux1_x86_64.whl (10.3 MB)
-Collecting wheel>=0.26; python_version >= "3"
-  Using cached wheel-0.34.2-py2.py3-none-any.whl (26 kB)
-Collecting google-auth-oauthlib<0.5,>=0.4.1
-  Using cached google_auth_oauthlib-0.4.1-py2.py3-none-any.whl (18 kB)
-Collecting markdown>=2.6.8
-  Using cached Markdown-3.2.2-py3-none-any.whl (88 kB)
-Collecting werkzeug>=0.11.15
-  Using cached Werkzeug-1.0.1-py2.py3-none-any.whl (298 kB)
-Collecting google-auth<2,>=1.6.3
-  Using cached google_auth-1.20.0-py2.py3-none-any.whl (91 kB)
-Collecting grpcio>=1.24.3
-  Using cached grpcio-1.30.0-cp38-cp38-manylinux2010_x86_64.whl (3.0 MB)
-Collecting absl-py>=0.4
-  Using cached absl-py-0.9.0.tar.gz (104 kB)
 Collecting tensorboard-plugin-wit>=1.6.0
   Using cached tensorboard_plugin_wit-1.7.0-py3-none-any.whl (779 kB)
 Collecting protobuf>=3.6.0
-  Downloading protobuf-3.12.4-cp38-cp38-manylinux1_x86_64.whl (1.3 MB)
+  Using cached protobuf-3.12.4-cp38-cp38-manylinux1_x86_64.whl (1.3 MB)
+Collecting werkzeug>=0.11.15
+  Using cached Werkzeug-1.0.1-py2.py3-none-any.whl (298 kB)
+Collecting absl-py>=0.4
+  Using cached absl-py-0.9.0.tar.gz (104 kB)
+Collecting markdown>=2.6.8
+  Using cached Markdown-3.2.2-py3-none-any.whl (88 kB)
+Collecting google-auth-oauthlib<0.5,>=0.4.1
+  Using cached google_auth_oauthlib-0.4.1-py2.py3-none-any.whl (18 kB)
+Collecting grpcio>=1.24.3
+  Using cached grpcio-1.30.0-cp38-cp38-manylinux2010_x86_64.whl (3.0 MB)
+Collecting google-auth<2,>=1.6.3
+  Using cached google_auth-1.20.0-py2.py3-none-any.whl (91 kB)
+Collecting wheel>=0.26; python_version >= "3"
+  Using cached wheel-0.34.2-py2.py3-none-any.whl (26 kB)
 Collecting audioread>=2.0.0
   Using cached audioread-2.1.8.tar.gz (21 kB)
 Collecting scikit-learn!=0.19.0,>=0.14.0
-  Using cached scikit_learn-0.23.1-cp38-cp38-manylinux1_x86_64.whl (6.7 MB)
+  Downloading scikit_learn-0.23.2-cp38-cp38-manylinux1_x86_64.whl (6.8 MB)
 Collecting joblib>=0.14
   Using cached joblib-0.16.0-py3-none-any.whl (300 kB)
 Collecting decorator>=3.0.0
@@ -196,10 +194,10 @@ Collecting jaconv
   Using cached jaconv-0.2.4.tar.gz (11 kB)
 Collecting g2p-en
   Using cached g2p_en-2.1.0-py3-none-any.whl (3.1 MB)
-Collecting pypinyin
-  Using cached pypinyin-0.38.1-py2.py3-none-any.whl (780 kB)
 Collecting underthesea
   Using cached underthesea-1.1.17-py3-none-any.whl (7.1 MB)
+Collecting pypinyin
+  Using cached pypinyin-0.38.1-py2.py3-none-any.whl (780 kB)
 Collecting jsonschema
   Using cached jsonschema-3.2.0-py2.py3-none-any.whl (56 kB)
 Collecting musdb>=0.3.0
@@ -215,61 +213,61 @@ Collecting bottleneck
     Preparing wheel metadata: started
     Preparing wheel metadata: finished with status 'done'
 Requirement already satisfied: future in ./venv/lib/python3.8/site-packages (from mir-eval>=0.6->espnet==0.9.0) (0.18.2)
+Requirement already satisfied: torch>=1.1.0 in ./venv/lib/python3.8/site-packages (from torch_optimizer->espnet==0.9.0) (1.6.0)
 Collecting pytorch-ranger>=0.1.1
   Using cached pytorch_ranger-0.1.1-py3-none-any.whl (14 kB)
-Requirement already satisfied: torch>=1.1.0 in ./venv/lib/python3.8/site-packages (from torch_optimizer->espnet==0.9.0) (1.6.0)
-Collecting chardet<4,>=3.0.2
-  Using cached chardet-3.0.4-py2.py3-none-any.whl (133 kB)
+Collecting urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1
+  Using cached urllib3-1.25.10-py2.py3-none-any.whl (127 kB)
 Collecting idna<3,>=2.5
   Using cached idna-2.10-py2.py3-none-any.whl (58 kB)
 Collecting certifi>=2017.4.17
   Using cached certifi-2020.6.20-py2.py3-none-any.whl (156 kB)
-Collecting urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1
-  Using cached urllib3-1.25.10-py2.py3-none-any.whl (127 kB)
+Collecting chardet<4,>=3.0.2
+  Using cached chardet-3.0.4-py2.py3-none-any.whl (133 kB)
 Collecting PySocks!=1.5.7,>=1.5.6; extra == "socks"
   Using cached PySocks-1.7.1-py3-none-any.whl (16 kB)
 Collecting pytz>=2017.2
   Using cached pytz-2020.1-py2.py3-none-any.whl (510 kB)
 Collecting requests-oauthlib>=0.7.0
   Using cached requests_oauthlib-1.3.0-py2.py3-none-any.whl (23 kB)
-Collecting cachetools<5.0,>=2.0.0
-  Using cached cachetools-4.1.1-py3-none-any.whl (10 kB)
-Collecting rsa<5,>=3.1.4; python_version >= "3.5"
-  Using cached rsa-4.6-py3-none-any.whl (47 kB)
 Collecting pyasn1-modules>=0.2.1
   Using cached pyasn1_modules-0.2.8-py2.py3-none-any.whl (155 kB)
+Collecting rsa<5,>=3.1.4; python_version >= "3.5"
+  Using cached rsa-4.6-py3-none-any.whl (47 kB)
+Collecting cachetools<5.0,>=2.0.0
+  Using cached cachetools-4.1.1-py3-none-any.whl (10 kB)
 Collecting threadpoolctl>=2.0.0
   Using cached threadpoolctl-2.1.0-py3-none-any.whl (12 kB)
 Collecting llvmlite<0.34,>=0.33.0.dev0
   Using cached llvmlite-0.33.0-cp38-cp38-manylinux1_x86_64.whl (18.3 MB)
-Collecting packaging
-  Using cached packaging-20.4-py2.py3-none-any.whl (37 kB)
 Collecting appdirs
   Using cached appdirs-1.4.4-py2.py3-none-any.whl (9.6 kB)
+Collecting packaging
+  Using cached packaging-20.4-py2.py3-none-any.whl (37 kB)
 Collecting pycparser
   Using cached pycparser-2.20-py2.py3-none-any.whl (112 kB)
 Collecting distance>=0.1.3
   Using cached Distance-0.1.3.tar.gz (180 kB)
-Collecting python-crfsuite==0.9.6
-  Using cached python-crfsuite-0.9.6.tar.gz (434 kB)
 Collecting languageflow==1.1.13a1
   Using cached languageflow-1.1.13a1-py2.py3-none-any.whl (457 kB)
+Collecting python-crfsuite==0.9.6
+  Using cached python-crfsuite-0.9.6.tar.gz (434 kB)
 Collecting pyrsistent>=0.14.0
   Using cached pyrsistent-0.16.0.tar.gz (108 kB)
 Collecting attrs>=17.4.0
   Using cached attrs-19.3.0-py2.py3-none-any.whl (39 kB)
-Collecting stempeg>=0.1.7
-  Using cached stempeg-0.1.8-py3-none-any.whl (509 kB)
 Collecting pyaml
   Using cached pyaml-20.4.0-py2.py3-none-any.whl (17 kB)
+Collecting stempeg>=0.1.7
+  Using cached stempeg-0.1.8-py3-none-any.whl (509 kB)
 Collecting oauthlib>=3.0.0
   Using cached oauthlib-3.1.0-py2.py3-none-any.whl (147 kB)
-Collecting pyasn1>=0.1.3
+Collecting pyasn1<0.5.0,>=0.4.6
   Using cached pyasn1-0.4.8-py2.py3-none-any.whl (77 kB)
-Collecting tabulate
-  Using cached tabulate-0.8.7-py3-none-any.whl (24 kB)
 Collecting clint
   Using cached clint-0.5.1.tar.gz (29 kB)
+Collecting tabulate
+  Using cached tabulate-0.8.7-py3-none-any.whl (24 kB)
 Collecting args
   Using cached args-0.1.0.tar.gz (3.0 kB)
 Using legacy 'setup.py install' for configargparse, since package 'wheel' is not installed.
@@ -298,14 +296,14 @@ Using legacy 'setup.py install' for args, since package 'wheel' is not installed
 Building wheels for collected packages: gdown, bottleneck
   Building wheel for gdown (PEP 517): started
   Building wheel for gdown (PEP 517): finished with status 'done'
-  Created wheel for gdown: filename=gdown-3.12.0-py3-none-any.whl size=9696 sha256=7737e2f12339964f22ffcd5006b2a11e76064bd90741c309b40322b17871b8ff
+  Created wheel for gdown: filename=gdown-3.12.0-py3-none-any.whl size=9696 sha256=188d7ecbd233ef3cc8099ed8d92273f8a95e4acde30bf9515812dd15039fc7d9
   Stored in directory: /root/.cache/pip/wheels/a4/2d/df/01599554cf48100c9bc228807033ef0fbfac5c89d284af33ef
   Building wheel for bottleneck (PEP 517): started
   Building wheel for bottleneck (PEP 517): finished with status 'done'
-  Created wheel for bottleneck: filename=Bottleneck-1.3.2-cp38-cp38-linux_x86_64.whl size=391938 sha256=72f39a9e3158d67648b9915cf1ffb967d377f8f622513cdb35af86b36dd9debe
+  Created wheel for bottleneck: filename=Bottleneck-1.3.2-cp38-cp38-linux_x86_64.whl size=391948 sha256=27f3b765e04ac154172fb8a9aa363dddd29309fd045a590177f0fed0a0a04a03
   Stored in directory: /root/.cache/pip/wheels/29/60/c9/98f744fb5c7d1ffb38d096318d9e873a08c0f5df07d6487626
 Successfully built gdown bottleneck
-Installing collected packages: configargparse, typeguard, dataclasses, humanfriendly, scipy, six, cycler, kiwisolver, pyparsing, python-dateutil, matplotlib, pillow, editdistance, chardet, idna, certifi, urllib3, PySocks, requests, tqdm, filelock, gdown, pytz, pandas, espnet-model-zoo, wheel, oauthlib, requests-oauthlib, cachetools, pyasn1, rsa, pyasn1-modules, google-auth, google-auth-oauthlib, markdown, werkzeug, grpcio, absl-py, tensorboard-plugin-wit, protobuf, tensorboard, tensorboardX, audioread, joblib, threadpoolctl, scikit-learn, decorator, llvmlite, numba, resampy, pycparser, cffi, soundfile, packaging, appdirs, pooch, librosa, pysptk, sentencepiece, click, regex, nltk, PyYAML, h5py, kaldiio, inflect, unidecode, cython, pyworld, fastdtw, sklearn, nnmnkwii, jaconv, distance, g2p-en, pypinyin, python-crfsuite, tabulate, args, clint, languageflow, underthesea, espnet-tts-frontend, pyrsistent, attrs, jsonschema, stempeg, pyaml, musdb, simplejson, museval, pystoi, bottleneck, nara-wpe, torch-complex, pytorch-wpe, mir-eval, pytorch-ranger, torch-optimizer, espnet
+Installing collected packages: configargparse, typeguard, dataclasses, humanfriendly, scipy, six, cycler, kiwisolver, pyparsing, python-dateutil, matplotlib, pillow, editdistance, urllib3, idna, certifi, chardet, PySocks, requests, filelock, tqdm, gdown, pytz, pandas, espnet-model-zoo, tensorboard-plugin-wit, protobuf, werkzeug, absl-py, markdown, oauthlib, requests-oauthlib, pyasn1, pyasn1-modules, rsa, cachetools, google-auth, google-auth-oauthlib, grpcio, wheel, tensorboard, tensorboardX, audioread, threadpoolctl, joblib, scikit-learn, decorator, llvmlite, numba, resampy, pycparser, cffi, soundfile, appdirs, packaging, pooch, librosa, pysptk, sentencepiece, click, regex, nltk, PyYAML, h5py, kaldiio, inflect, unidecode, cython, pyworld, fastdtw, sklearn, nnmnkwii, jaconv, distance, g2p-en, args, clint, tabulate, languageflow, python-crfsuite, underthesea, pypinyin, espnet-tts-frontend, pyrsistent, attrs, jsonschema, pyaml, stempeg, musdb, simplejson, museval, pystoi, bottleneck, nara-wpe, torch-complex, pytorch-wpe, mir-eval, pytorch-ranger, torch-optimizer, torchaudio, espnet
     Running setup.py install for configargparse: started
     Running setup.py install for configargparse: finished with status 'done'
     Running setup.py install for matplotlib: started
@@ -340,12 +338,12 @@ Installing collected packages: configargparse, typeguard, dataclasses, humanfrie
     Running setup.py install for jaconv: finished with status 'done'
     Running setup.py install for distance: started
     Running setup.py install for distance: finished with status 'done'
-    Running setup.py install for python-crfsuite: started
-    Running setup.py install for python-crfsuite: finished with status 'done'
     Running setup.py install for args: started
     Running setup.py install for args: finished with status 'done'
     Running setup.py install for clint: started
     Running setup.py install for clint: finished with status 'done'
+    Running setup.py install for python-crfsuite: started
+    Running setup.py install for python-crfsuite: finished with status 'done'
     Running setup.py install for pyrsistent: started
     Running setup.py install for pyrsistent: finished with status 'done'
     Running setup.py install for pystoi: started
@@ -358,11 +356,11 @@ ERROR: After October 2020 you may experience errors when installing or updating 
 We recommend you use --use-feature=2020-resolver to test your packages with the new resolver before it becomes the default.
 
 languageflow 1.1.13a1 requires joblib==0.13.2, but you'll have joblib 0.16.0 which is incompatible.
-languageflow 1.1.13a1 requires scikit-learn==0.20.3, but you'll have scikit-learn 0.23.1 which is incompatible.
+languageflow 1.1.13a1 requires scikit-learn==0.20.3, but you'll have scikit-learn 0.23.2 which is incompatible.
 underthesea 1.1.17 requires nltk<3.5,>=3.4, but you'll have nltk 3.5 which is incompatible.
-Successfully installed PySocks-1.7.1 PyYAML-5.3.1 absl-py-0.9.0 appdirs-1.4.4 args-0.1.0 attrs-19.3.0 audioread-2.1.8 bottleneck-1.3.2 cachetools-4.1.1 certifi-2020.6.20 cffi-1.14.1 chardet-3.0.4 click-7.1.2 clint-0.5.1 configargparse-1.2.3 cycler-0.10.0 cython-0.29.21 dataclasses-0.6 decorator-4.4.2 distance-0.1.3 editdistance-0.5.2 espnet espnet-model-zoo-0.0.0a5 espnet-tts-frontend-0.0.2 fastdtw-0.3.4 filelock-3.0.12 g2p-en-2.1.0 gdown-3.12.0 google-auth-1.20.0 google-auth-oauthlib-0.4.1 grpcio-1.30.0 h5py-2.9.0 humanfriendly-8.2 idna-2.10 inflect-4.1.0 jaconv-0.2.4 joblib-0.16.0 jsonschema-3.2.0 kaldiio-2.15.1 kiwisolver-1.2.0 languageflow-1.1.13a1 librosa-0.8.0 llvmlite-0.33.0 markdown-3.2.2 matplotlib-3.1.0 mir-eval-0.6 musdb-0.3.1 museval-0.3.0 nara-wpe-0.0.7 nltk-3.5 nnmnkwii-0.0.20 numba-0.50.1 oauthlib-3.1.0 packaging-20.4 pandas-1.1.0 pillow-7.2.0 pooch-1.1.1 protobuf-3.12.4 pyaml-20.4.0 pyasn1-0.4.8 pyasn1-modules-0.2.8 pycparser-2.20 pyparsing-2.4.7 pypinyin-0.38.1 pyrsistent-0.16.0 pysptk-0.1.18 pystoi-0.3.3 python-crfsuite-0.9.6 python-dateutil-2.8.1 pytorch-ranger-0.1.1 pytorch-wpe-0.0.0 pytz-2020.1 pyworld-0.2.10 regex-2020.7.14 requests-2.24.0 requests-oauthlib-1.3.0 resampy-0.2.2 rsa-4.6 scikit-learn-0.23.1 scipy-1.5.2 sentencepiece-0.1.86 simplejson-3.17.2 six-1.15.0 sklearn-0.0 soundfile-0.10.3.post1 stempeg-0.1.8 tabulate-0.8.7 tensorboard-2.3.0 tensorboard-plugin-wit-1.7.0 tensorboardX-2.1 threadpoolctl-2.1.0 torch-complex-0.1.1 torch-optimizer-0.0.1a14 tqdm-4.48.0 typeguard-2.9.1 underthesea-1.1.17 unidecode-1.1.1 urllib3-1.25.10 werkzeug-1.0.1 wheel-0.34.2
+Successfully installed PySocks-1.7.1 PyYAML-5.3.1 absl-py-0.9.0 appdirs-1.4.4 args-0.1.0 attrs-19.3.0 audioread-2.1.8 bottleneck-1.3.2 cachetools-4.1.1 certifi-2020.6.20 cffi-1.14.1 chardet-3.0.4 click-7.1.2 clint-0.5.1 configargparse-1.2.3 cycler-0.10.0 cython-0.29.21 dataclasses-0.6 decorator-4.4.2 distance-0.1.3 editdistance-0.5.2 espnet espnet-model-zoo-0.0.0a5 espnet-tts-frontend-0.0.2 fastdtw-0.3.4 filelock-3.0.12 g2p-en-2.1.0 gdown-3.12.0 google-auth-1.20.0 google-auth-oauthlib-0.4.1 grpcio-1.30.0 h5py-2.9.0 humanfriendly-8.2 idna-2.10 inflect-4.1.0 jaconv-0.2.4 joblib-0.16.0 jsonschema-3.2.0 kaldiio-2.15.1 kiwisolver-1.2.0 languageflow-1.1.13a1 librosa-0.8.0 llvmlite-0.33.0 markdown-3.2.2 matplotlib-3.1.0 mir-eval-0.6 musdb-0.3.1 museval-0.3.0 nara-wpe-0.0.7 nltk-3.5 nnmnkwii-0.0.20 numba-0.50.1 oauthlib-3.1.0 packaging-20.4 pandas-1.1.0 pillow-7.2.0 pooch-1.1.1 protobuf-3.12.4 pyaml-20.4.0 pyasn1-0.4.8 pyasn1-modules-0.2.8 pycparser-2.20 pyparsing-2.4.7 pypinyin-0.38.1 pyrsistent-0.16.0 pysptk-0.1.18 pystoi-0.3.3 python-crfsuite-0.9.6 python-dateutil-2.8.1 pytorch-ranger-0.1.1 pytorch-wpe-0.0.0 pytz-2020.1 pyworld-0.2.10 regex-2020.7.14 requests-2.24.0 requests-oauthlib-1.3.0 resampy-0.2.2 rsa-4.6 scikit-learn-0.23.2 scipy-1.5.2 sentencepiece-0.1.86 simplejson-3.17.2 six-1.15.0 sklearn-0.0 soundfile-0.10.3.post1 stempeg-0.1.8 tabulate-0.8.7 tensorboard-2.3.0 tensorboard-plugin-wit-1.7.0 tensorboardX-2.1 threadpoolctl-2.1.0 torch-complex-0.1.1 torch-optimizer-0.0.1a14 torchaudio-0.6.0 tqdm-4.48.2 typeguard-2.9.1 underthesea-1.1.17 unidecode-1.1.1 urllib3-1.25.10 werkzeug-1.0.1 wheel-0.34.2
 touch espnet.done
-. ./activate_python.sh && pip3 install chainer==6.0.0
+. ./activate_python.sh && python3 -m pip install chainer==6.0.0
 Collecting chainer==6.0.0
   Using cached chainer-6.0.0.tar.gz (880 kB)
 Requirement already satisfied: setuptools in ./venv/lib/python3.8/site-packages (from chainer==6.0.0) (41.2.0)
@@ -378,11 +376,11 @@ Requirement already satisfied: six>=1.9.0 in ./venv/lib/python3.8/site-packages 
 Building wheels for collected packages: chainer, typing
   Building wheel for chainer (setup.py): started
   Building wheel for chainer (setup.py): finished with status 'done'
-  Created wheel for chainer: filename=chainer-6.0.0-py3-none-any.whl size=876775 sha256=fba2be03386973c17ae90a7deb2fa7278b50c092f2db8fb3ce9a728e44522dda
+  Created wheel for chainer: filename=chainer-6.0.0-py3-none-any.whl size=876775 sha256=1ff41c518ca6782ce07e4809bded9ab6cf9d05f97f59dc6e617a93891cc1688a
   Stored in directory: /root/.cache/pip/wheels/24/bc/15/66b239e10b5ae6b5bb7dace74f21275886dfbfa327bc25cb96
   Building wheel for typing (setup.py): started
   Building wheel for typing (setup.py): finished with status 'done'
-  Created wheel for typing: filename=typing-3.7.4.3-py3-none-any.whl size=26308 sha256=b7bc5829601ffa40189fecd2e8027a2452432dc973ba369422f94dd8a24863dd
+  Created wheel for typing: filename=typing-3.7.4.3-py3-none-any.whl size=26308 sha256=bf613f4360ddf87fe19723080a8684f07c5160c8a6180530da111b905d532df0
   Stored in directory: /root/.cache/pip/wheels/5e/5d/01/3083e091b57809dad979ea543def62d9d878950e3e74f0c930
 Successfully built chainer typing
 Installing collected packages: typing, typing-extensions, protobuf, chainer
@@ -397,7 +395,7 @@ We recommend you use --use-feature=2020-resolver to test your packages with the 
 tensorboardx 2.1 requires protobuf>=3.8.0, but you'll have protobuf 3.7.1 which is incompatible.
 Successfully installed chainer-6.0.0 protobuf-3.7.1 typing-3.7.4.3 typing-extensions-3.7.4.2
 touch chainer.done
-. ./activate_python.sh; python check_install.py --no-cupy
+. ./activate_python.sh; python3 check_install.py --no-cupy
 INFO: python version = 3.8.3 (default, Jul  2 2020, 16:21:59) 
 [GCC 7.3.0]
 INFO: pytorch version = 1.6.0

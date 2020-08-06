@@ -19,8 +19,6 @@ MANUALLY_INSTALLED_LIBRARIES = [
     ("kaldiio", None),
     ("matplotlib", None),
     ("chainer", ("6.0.0")),
-    ("chainer_ctc", None),
-    ("warprnnt_pytorch", ("0.1")),
 ]
 
 # NOTE: list all torch versions which are compatible with espnet
@@ -37,6 +35,7 @@ COMPATIBLE_TORCH_VERSIONS = (
     "1.5.0",
     "1.5.1",
     "1.6.0",
+    "1.6.1",
 )
 
 
